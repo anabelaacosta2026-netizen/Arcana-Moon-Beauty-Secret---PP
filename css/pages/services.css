@@ -1,0 +1,169 @@
+/* ==========================================
+   ARCANA — Services Page Styles
+   ========================================== */
+
+.services-page {
+  padding-top: 120px;
+  padding-bottom: var(--space-3xl);
+}
+
+.services-page__layout {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.services-sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.services-sidebar__inner {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.22);
+  border-radius: 22px;
+  padding: 1.75rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-glass);
+}
+
+.services-sidebar__search {
+  position: relative;
+}
+
+.services-sidebar__search svg {
+  position: absolute;
+  left: 1.125rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-accent);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.services-sidebar__search input {
+  padding-left: 2.75rem;
+}
+
+.services-sidebar__section {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.services-sidebar__heading {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.services-sidebar__categories {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.services-sidebar__price-range {
+  margin-top: 0.875rem;
+}
+
+.services-sidebar__price-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.625rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.sidebar-toggle {
+  display: none;
+  margin-bottom: var(--space-sm);
+}
+
+/* Skeleton Loading Cards */
+.services-skeleton {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.skeleton-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.skeleton-card__img {
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(196,84,126,0.12) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: skeletonShine 1.8s infinite;
+}
+
+.skeleton-card__body {
+  padding: 1.375rem;
+}
+
+.skeleton-card__line {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.skeleton-card__line--short {
+  width: 55%;
+}
+
+@keyframes skeletonShine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.services-error {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+@media (max-width: 1023px) {
+  .services-grid, .services-skeleton {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .services-page__layout {
+    grid-template-columns: 1fr;
+  }
+  .services-sidebar {
+    position: static;
+    display: none;
+  }
+  .services-sidebar--open {
+    display: block;
+  }
+  .sidebar-toggle {
+    display: inline-flex;
+  }
+  .services-grid, .services-skeleton {
+    grid-template-columns: 1fr;
+  }
+}

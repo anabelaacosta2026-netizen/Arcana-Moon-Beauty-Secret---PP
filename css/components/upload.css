@@ -1,0 +1,204 @@
+/* ==========================================
+   ARCANA — Drag & Drop Image Uploader
+   ========================================== */
+
+.image-dropzone-wrapper {
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+.image-dropzone {
+  position: relative;
+  border: 2px dashed rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sm, 10px);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image-dropzone:hover {
+  border-color: rgba(196, 84, 126, 0.6);
+  background: rgba(196, 84, 126, 0.06);
+  box-shadow: 0 0 20px rgba(196, 84, 126, 0.12);
+}
+
+.image-dropzone:focus-visible {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(196, 84, 126, 0.25);
+}
+
+.image-dropzone--dragover {
+  border-color: var(--color-accent) !important;
+  background: rgba(196, 84, 126, 0.15) !important;
+  box-shadow: 0 0 25px rgba(196, 84, 126, 0.3) !important;
+  transform: scale(1.01);
+}
+
+/* Prompt State */
+.image-dropzone__prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  pointer-events: none;
+}
+
+.image-dropzone__icon {
+  color: var(--color-accent);
+  margin-bottom: 0.2rem;
+  transition: transform 0.2s ease;
+}
+
+.image-dropzone:hover .image-dropzone__icon {
+  transform: translateY(-2px);
+}
+
+.image-dropzone__text {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.image-dropzone__highlight {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.image-dropzone__browse {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+
+.image-dropzone__hint {
+  font-size: 0.725rem;
+  color: var(--color-text-muted);
+}
+
+/* Preview State */
+.image-dropzone__preview {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.25rem;
+}
+
+.image-dropzone__thumb-box {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-dropzone__thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-dropzone__details {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.image-dropzone__filename {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.image-dropzone__status {
+  font-size: 0.75rem;
+  color: #34d399;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.image-dropzone__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.image-dropzone__btn-change,
+.image-dropzone__btn-remove {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.image-dropzone__btn-change:hover {
+  background: rgba(196, 84, 126, 0.25);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.image-dropzone__btn-remove:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #f87171;
+}
+
+/* Loading State Overlay */
+.image-dropzone__loading {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 3, 8, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  z-index: 10;
+}
+
+.image-dropzone__spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: dropzone-spin 0.7s linear infinite;
+}
+
+.image-dropzone__loading-text {
+  font-size: 0.775rem;
+  color: var(--color-text-secondary);
+}
+
+@keyframes dropzone-spin {
+  to { transform: rotate(360deg); }
+}

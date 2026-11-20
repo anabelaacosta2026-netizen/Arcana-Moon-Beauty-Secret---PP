@@ -1,0 +1,189 @@
+/* ==========================================
+   ARCANA — Agenda & Services Booking Styles
+   ========================================== */
+
+.agenda-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .agenda-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Time slots grid */
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.time-slot {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm, 8px);
+  color: var(--color-text-primary);
+  padding: 0.6rem 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.time-slot:hover:not(.time-slot--occupied):not(:disabled) {
+  border-color: var(--color-accent);
+  background: rgba(196, 84, 126, 0.15);
+  transform: translateY(-2px);
+}
+
+.time-slot--selected {
+  background: linear-gradient(135deg, rgba(196, 84, 126, 0.9), rgba(139, 92, 246, 0.9)) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 15px rgba(196, 84, 126, 0.4);
+}
+
+.time-slot--occupied,
+.time-slot:disabled {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  color: rgba(255, 255, 255, 0.25) !important;
+  cursor: not-allowed !important;
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.time-slot__badge {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #f87171;
+  text-decoration: none;
+  display: block;
+}
+
+/* Day blocked alert */
+.day-blocked-banner {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #f87171;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Contracted Services Sidebar */
+.contracted-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-card, 16px);
+  padding: 1.75rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.contracted-service-item {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 0.85rem;
+  transition: border-color 0.2s;
+}
+
+.contracted-service-item:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.contracted-service-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.contracted-service-meta {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.contracted-price-breakdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* Total Summary Box */
+.deposit-summary-box {
+  background: rgba(196, 84, 126, 0.08);
+  border: 1px solid rgba(196, 84, 126, 0.25);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.deposit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.deposit-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.deposit-btn-mp {
+  width: 100%;
+  background: #009ee3;
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem 1.25rem;
+  border-radius: var(--radius-pill, 9999px);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 158, 227, 0.35);
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.deposit-btn-mp:hover {
+  background: #0084bf;
+  transform: translateY(-1px);
+}

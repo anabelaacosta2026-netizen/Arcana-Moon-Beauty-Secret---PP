@@ -1,0 +1,67 @@
+/* ==========================================
+   ARCANA — Glassmorphism Components
+   ========================================== */
+
+/* Base glass card */
+.glass {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid var(--color-glass-border);
+  border-top-color: rgba(255, 255, 255, 0.35);
+  border-left-color: rgba(255, 255, 255, 0.25);
+  box-shadow: var(--shadow-glass);
+  border-radius: var(--radius-card);
+  position: relative;
+}
+
+/* Shimmer top edge on glass */
+.glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+/* Darker glass variant */
+.glass--dark {
+  background: var(--color-glass-bg-dark);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Subtle glass */
+.glass--subtle {
+  background: var(--color-glass-bg-subtle);
+  border: 1px solid var(--color-glass-border-subtle);
+  box-shadow: none;
+}
+
+/* Hover elevation */
+.glass--hover {
+  transition: transform var(--transition-bounce),
+    box-shadow var(--transition-bounce), border-color var(--transition-base),
+    background var(--transition-base);
+}
+
+.glass--hover:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: rgba(255, 255, 255, 0.45);
+  box-shadow: var(--shadow-glass-hover);
+  transform: translateY(-4px);
+}
+
+/* Glass pill (navbar) */
+.glass-pill {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-pill);
+}

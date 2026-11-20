@@ -1,0 +1,97 @@
+/* ==========================================
+   ARCANA — Luminous Orbs Background
+   ========================================== */
+
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: var(--z-orbs);
+  will-change: transform;
+  opacity: 0;
+  animation: orbFadeIn 2s ease forwards, orbFloat var(--orb-duration, 12s) ease-in-out infinite;
+}
+
+.orb-1 {
+  --orb-duration: 14s;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle at 40% 40%, #e8a8c8 0%, #c4547e 40%, #7a2050 100%);
+  top: -12%;
+  left: -12%;
+  opacity: 0.4;
+  animation-delay: 0s, 0s;
+}
+
+.orb-2 {
+  --orb-duration: 17s;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle at 60% 30%, #a855f7 0%, #7c3aed 50%, #4c1d95 100%);
+  top: 25%;
+  right: -10%;
+  opacity: 0.3;
+  animation-delay: 0.5s, -4s;
+}
+
+.orb-3 {
+  --orb-duration: 11s;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle at 50% 50%, #f472b6 0%, #db2777 50%, #9d174d 100%);
+  bottom: 12%;
+  left: 22%;
+  opacity: 0.35;
+  animation-delay: 0.8s, -6s;
+}
+
+.orb-4 {
+  --orb-duration: 20s;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle at 30% 70%, #9b4f78 0%, #c4547e 50%, #e8a8c8 100%);
+  top: 55%;
+  left: -8%;
+  opacity: 0.28;
+  animation-delay: 0.3s, -2s;
+}
+
+.orb-5 {
+  --orb-duration: 15s;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at 50% 50%, #fb7185 0%, #e11d48 60%, #9f1239 100%);
+  top: 8%;
+  right: 18%;
+  opacity: 0.25;
+  animation-delay: 1s, -8s;
+}
+
+.orb-6 {
+  --orb-duration: 13s;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle at 40% 60%, #c084fc 0%, #a855f7 50%, #7e22ce 100%);
+  bottom: 2%;
+  right: 8%;
+  opacity: 0.3;
+  animation-delay: 0.6s, -5s;
+}
+
+@keyframes orbFadeIn {
+  from { opacity: 0; }
+  to   { opacity: var(--orb-final-opacity, 0.35); }
+}
+
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  33% {
+    transform: translateY(-28px) translateX(12px) scale(1.03);
+  }
+  66% {
+    transform: translateY(18px) translateX(-10px) scale(0.97);
+  }
+}

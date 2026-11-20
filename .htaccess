@@ -1,0 +1,50 @@
+# ==============================================================================
+# ARCANA MOON BEAUTY SECRET — APACHE CONFIGURATION (COMPATIBLE WAMP APACHE 2.4)
+# ==============================================================================
+
+# 1. ─── DESHABILITAR INDEXACIÓN DE DIRECTORIOS ──────────────────────────────
+<IfModule mod_autoindex.c>
+  Options -Indexes
+</IfModule>
+
+# 2. ─── CABECERAS DE SEGURIDAD Y CONTROL DE CACHÉ ───────────────────────────
+<IfModule mod_headers.c>
+  # Cabeceras de seguridad
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Control de caché para desarrollo en scripts dinámicos
+  <FilesMatch "\.(js|php)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  <FilesMatch "\.css$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  <FilesMatch "\.(png|jpg|jpeg|gif|webp|svg|woff|woff2|ttf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# 3. ─── BLOQUEO DE ARCHIVOS SENSIBLES (APACHE 2.4 & 2.2) ─────────────────────
+<FilesMatch "\.(env|sql|json|log|bak|config|git|gitignore|ini|sh|bat)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order Allow,Deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# 4. ─── REGLAS DE REESCRITURA ───────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Bloquear acceso directo a directorios internos
+  RewriteRule ^(config|database)/ - [F,L]
+</IfModule>

@@ -1,0 +1,95 @@
+/* ==========================================
+   ARCANA — Modal de usuario (crear/editar)
+   Usa las mismas variables de diseño que el
+   resto del proyecto (variables.css)
+   ========================================== */
+
+.user-modal {
+  position: relative;
+  width: min(520px, 94vw);
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: var(--space-xl);
+  background: rgba(12, 4, 10, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top-color: rgba(232, 168, 200, 0.3);
+  border-radius: var(--radius-card);
+  backdrop-filter: blur(var(--blur-glass)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(180%);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(196, 84, 126, 0.12),
+              var(--shadow-glass);
+}
+
+.user-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196, 84, 126, 0.6), rgba(232, 168, 200, 0.8), rgba(196, 84, 126, 0.6), transparent);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.user-modal__close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--color-text-muted);
+  transition: background var(--transition-fast),
+              color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.user-modal__close:hover {
+  background: rgba(248, 113, 113, 0.15);
+  border-color: rgba(248, 113, 113, 0.35);
+  color: var(--color-status-inactive);
+}
+
+.user-modal__title {
+  margin-bottom: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.user-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.user-modal__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.user-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.user-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+@media (max-width: 560px) {
+  .user-modal__row {
+    grid-template-columns: 1fr;
+  }
+}

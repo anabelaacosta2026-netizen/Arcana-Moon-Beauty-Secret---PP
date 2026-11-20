@@ -1,0 +1,173 @@
+/* ==========================================
+   ARCANA — Buttons
+   ========================================== */
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(15, 5, 12, 0.5);
+  cursor: pointer;
+  transition: background var(--transition-base),
+              border-color var(--transition-base),
+              transform var(--transition-bounce),
+              box-shadow var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.btn-pill:hover::before {
+  left: 160%;
+}
+
+.btn-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+/* Primary button — gradient rose */
+.btn-pill--primary {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: #fff;
+  font-style: normal;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  box-shadow: var(--shadow-primary);
+}
+
+.btn-pill--primary:hover {
+  background: linear-gradient(135deg, #d4648e 0%, #b05f88 50%, #8a4d78 100%);
+  border-color: transparent;
+  box-shadow: var(--shadow-primary-hover);
+  transform: translateY(-3px);
+}
+
+/* Accent button */
+.btn-pill--accent {
+  background: rgba(196, 84, 126, 0.25);
+  border-color: rgba(196, 84, 126, 0.5);
+  box-shadow: 0 0 0 1px rgba(196, 84, 126, 0.3),
+              0 4px 16px rgba(196, 84, 126, 0.2);
+}
+
+.btn-pill--accent:hover {
+  background: rgba(196, 84, 126, 0.4);
+  border-color: rgba(196, 84, 126, 0.7);
+}
+
+/* Outline button */
+.btn-pill--outline {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-pill--outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Small */
+.btn-pill--sm {
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-style: normal;
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+}
+
+/* Full width */
+.btn-pill--full {
+  width: 100%;
+}
+
+/* FAB button */
+.btn-fab {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: transform var(--transition-bounce),
+              box-shadow var(--transition-base);
+  box-shadow: var(--shadow-primary);
+}
+
+.btn-fab:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: var(--shadow-primary-hover);
+}
+
+/* ==========================================
+   Google OAuth Button
+   ========================================== */
+.btn-google {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill, 9999px);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--color-text-primary, #ffffff);
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-base, 0.25s ease);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.btn-google:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+}
+
+.btn-google:active {
+  transform: translateY(0);
+}
+
+.btn-google .google-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+

@@ -1,0 +1,60 @@
+/* ==========================================
+   ARCANA — Contact & Agenda Pages Styles
+   ========================================== */
+
+.contact-page, .agenda-page {
+  padding-top: 120px;
+  padding-bottom: var(--space-3xl);
+}
+
+.contact-page__inner, .agenda-page__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+}
+
+.contact-page__form, .agenda-page__form {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-page__image, .agenda-page__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0 20px 20px 0;
+  min-height: 520px;
+}
+
+.contact-page__title {
+  margin-bottom: 0.35rem;
+}
+
+.contact-page__subtitle {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.agenda-page__subtitle {
+  font-size: 0.9375rem;
+  color: rgba(248, 241, 255, 0.8);
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+}
+
+@media (max-width: 767px) {
+  .contact-page__inner, .agenda-page__inner {
+    grid-template-columns: 1fr;
+  }
+  .contact-page__image, .agenda-page__image {
+    display: none;
+  }
+  .contact-page__form, .agenda-page__form {
+    padding: 2rem 1.5rem;
+  }
+}

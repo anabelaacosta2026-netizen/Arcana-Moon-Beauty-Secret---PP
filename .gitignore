@@ -1,0 +1,46 @@
+# ==========================================
+# ARCANA — Archivos y Secretos Ignorados por Git
+# ==========================================
+
+# Variables de entorno y credenciales privadas
+.env
+.env.cdmon
+.env.local
+.env.production
+config/secrets.php
+
+# Documentación privada con credenciales reales
+README_CREDENCIALES.md
+*TUTORIAL*
+*TUTORIAL*.*
+*GUIA*
+*GUIA*.*
+*PASO_A_PASO*
+*PASO_A_PASO*.*
+guias/
+tutoriales/
+
+# Logs del servidor y de correos
+database/mail_logs/
+*.log
+
+# Base de datos SQLite local
+database/*.sqlite
+database/*.sqlite3
+database/*.db
+
+# Archivos de configuración de IDEs y editores
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos temporales del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Subidas temporales
+uploads/temp/
