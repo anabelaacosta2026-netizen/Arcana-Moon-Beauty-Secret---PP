@@ -560,6 +560,16 @@ if ($action === 'google_login' && $method === 'POST') {
 
     if (!empty($usuarios)) {
         $user = $usuarios[0];
+        // Si la cuenta tenía id_rol = 2 debido al bug anterior y no es un administrador autorizado, corregir automáticamente a Cliente (id_rol = 3)
+        $userEmail = strtolower(trim($user['email'] ?? ''));
+        $adminEmails = ['anabelaacosta2026@gmail.com', 'fernandocabraldev@gmail.com'];
+        if ((int)($user['id_rol'] ?? 0) === 2 && !in_array($userEmail, $adminEmails, true)) {
+            $db->update('usuario', 'id_usuario', $user['id_usuario'], [
+                'id_rol' => 3
+            ]);
+            $user['id_rol'] = 3;
+        }
+
         // Asegurar que la cuenta esté activa y verificada
         $db->update('usuario', 'id_usuario', $user['id_usuario'], [
             'activo' => 1,
@@ -568,7 +578,7 @@ if ($action === 'google_login' && $method === 'POST') {
         $user['activo'] = 1;
         $user['email_verificado'] = 1;
     } else {
-        // Registrar automáticamente nuevo cliente
+        // Registrar automáticamente nuevo cliente con id_rol = 3 (Cliente)
         $randomPass = password_hash(bin2hex(random_bytes(16)), PASSWORD_BCRYPT);
         $user = $db->insert('usuario', [
             'nombre' => $nombre ?: 'Usuario',
@@ -580,12 +590,12 @@ if ($action === 'google_login' && $method === 'POST') {
             'email_verificado' => 1,
             'telefono' => '',
             'DNI' => (string)rand(30000000, 49000000),
-            'id_rol' => 2 // Rol Usuario / Cliente
+            'id_rol' => 3 // Rol Cliente
         ], 'id_usuario');
     }
 
     // Obtener información del rol
-    $idRol = (int)($user['id_rol'] ?? 2);
+    $idRol = (int)($user['id_rol'] ?? 3);
     $rol = $db->getById('roles', 'id_rol', $idRol);
     $user['rol'] = $rol ? $rol['nombre_rol'] : ($user['rol'] ?? 'usuario');
     $user['id'] = (int)$user['id_usuario'];

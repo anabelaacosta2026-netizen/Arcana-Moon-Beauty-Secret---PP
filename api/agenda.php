@@ -512,7 +512,7 @@ if ($method === 'POST' && ($action === '' || $action === 'agendar' || $action ==
             'activo' => 1,
             'telefono' => $telefono,
             'DNI' => (string)rand(30000000, 48000000),
-            'id_rol' => 2
+            'id_rol' => 3 // Rol Cliente
         ], 'id_usuario');
         $idUsuario = (int)$nuevoU['id_usuario'];
     }

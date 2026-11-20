@@ -273,7 +273,7 @@ if ($method === 'POST' && ($_POST['_method'] ?? '') !== 'PUT' && ($_POST['_metho
                 'activo' => 1,
                 'telefono' => '',
                 'DNI' => (string)rand(30000000, 45000000),
-                'id_rol' => 2
+                'id_rol' => 3 // Rol Cliente
             ], 'id_usuario');
             $idUsuario = (int)$nuevoU['id_usuario'];
         }
